@@ -10,6 +10,7 @@ export const colors = {
   gray400: '#A6ADB5',
   gray700: '#5A5F65',
   gray900: '#26282B',
+  navy900: '#1B2A4A',
 } as const;
 
 /** ライトモードで使う色。インラインスタイルにはこの値をそのまま書く。 */

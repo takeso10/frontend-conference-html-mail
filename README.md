@@ -33,7 +33,7 @@ pnpm build   # dist/ に HTML を出力
 | 2 | `[data-ogsc]` でも CSS 変数を再定義する | Outlook.com は CSS 変数に非対応なので、変数を書き換えても効かない | `[data-ogsc]` には変数ではなく実際の色を直接書く |
 | 3 | `<meta name="color-scheme">` がない | 自動変換するクライアントに、両モード対応済みだと伝えられない | `color-scheme` と `supported-color-schemes` を宣言する |
 | 4 | 背景色をどこにも指定しない | 背景がクライアントの自動変換任せになり、文字色との組み合わせが破綻する | ページ背景・カード背景を静的値で必ず持たせる |
-| 5 | 透過 PNG のロゴを置く | 背景だけが反転し、濃い色のロゴが沈んで読めなくなる | 白い板と余白を焼き込んだ PNG にする。SVG は Gmail が非対応なので使えない |
+| 5 | ロゴをインライン SVG にし、`@media` で色を切り替える | Gmail は `<svg>` を除去し、Outlook デスクトップも描画しないので、ロゴごと消える | 白い板と余白を焼き込んだ PNG にする |
 | 6 | 色指定が `var()` 単独 | `var()` を解釈できないクライアントは、そのプロパティごと捨てる。背景や色が落ちる | shorthand で静的値 → longhand で `var()` の順に二重で書く |
 | 7 | `border: none` のあとに `border-top: 1px solid var(...)` | `var()` を含む `border-top` が捨てられ、`border: none` だけが残って罫線が消える | `border-top` を静的値で書き、`border-top-color` を `var()` で上書きする |
 
@@ -110,5 +110,5 @@ Outlook.com は、インラインの `color` を変換した要素にだけ `dat
 `public/` の PNG を jsDelivr 経由で配信しています。
 メールクライアントはローカルファイルを読めないため、画像は公開 URL である必要があります。
 
-- `logo-transparent.png` — 透過 PNG。ダークモードで沈む例
+- `logo-transparent.png` — 透過 PNG。ダークモードで沈む例（現在はテンプレートから未使用）
 - `logo-plate.png` — 白い板と余白を焼き込んだもの。どちらのモードでも同じ見え方になる
