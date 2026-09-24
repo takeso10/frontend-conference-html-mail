@@ -1,4 +1,4 @@
-/** 架空サービス「Lumina」のデモ用トークン。 */
+/** 架空サービス「Sample」のデモ用トークン。 */
 export const colors = {
   black: '#16181A',
   white: '#FFFFFF',
@@ -19,7 +19,6 @@ export const light = {
   bgPage: colors.gray100,
   bgCard: colors.white,
   border: colors.gray200,
-  link: colors.blue600,
 } as const;
 
 /** ダークモードで上書きする色。light と同じキーを必ず持たせて、対で管理する。 */
@@ -29,16 +28,15 @@ export const dark: Record<keyof typeof light, string> = {
   bgPage: colors.gray900,
   bgCard: colors.black,
   border: colors.whiteAlpha,
-  link: colors.blue400,
 };
 
 const CDN = 'https://cdn.jsdelivr.net/gh/takeso10/frontend-conference-html-mail@main/public';
 
 export const logos = {
   /** 透過PNG。ダークモードで背景が反転すると沈む。 */
-  transparent: `${CDN}/logo-transparent.png`,
+  transparent: `${CDN}/logo-transparent.png?v=2`,
   /** 白い板と余白を焼き込んだPNG。どちらのモードでも同じ見え方になる。 */
-  plate: `${CDN}/logo-plate.png`,
+  plate: `${CDN}/logo-plate.png?v=2`,
 } as const;
 
 export const fontFamily =

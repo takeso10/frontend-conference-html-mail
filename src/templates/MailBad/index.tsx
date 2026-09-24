@@ -2,11 +2,9 @@ import {
   Body,
   Container,
   Head,
-  Heading,
   Hr,
   Html,
   Img,
-  Link,
   Section,
   Text,
 } from '@react-email/components';
@@ -30,7 +28,6 @@ const style = `
     --text-secondary: ${light.textSecondary};
     --bg-card: ${light.bgCard};
     --border: ${light.border};
-    --link: ${light.link};
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -38,7 +35,6 @@ const style = `
       --text-secondary: ${colors.gray400};
       --bg-card: ${colors.black};
       --border: ${colors.whiteAlpha};
-      --link: ${colors.blue400};
     }
   }
 `;
@@ -51,11 +47,11 @@ export const MailBad: FC = () => {
         <meta content="width=device-width" name="viewport" />
         <style>{style}</style>
       </Head>
-      {/* 問題4: body に背景色を指定していない。クライアントの自動変換任せになる。 */}
+      {/* 問題4: 背景色をどこにも指定していない。クライアントの自動変換任せになる。 */}
       <Body style={{ margin: 0, fontFamily }}>
         <Section style={{ padding: '40px 0', textAlign: 'center' }}>
           {/* 問題5: 透過PNGのロゴ。背景だけが反転するとロゴが沈んで読めなくなる。 */}
-          <Img alt="Lumina" height={40} src={logos.transparent} />
+          <Img alt="Sample" height={40} src={logos.transparent} style={{ margin: '0 auto' }} />
         </Section>
 
         <Container style={{ width: '100%', maxWidth: '600px', margin: '0 auto' }}>
@@ -68,34 +64,40 @@ export const MailBad: FC = () => {
               padding: '40px',
             }}
           >
-            <Heading
-              style={{
-                margin: 0,
-                fontSize: '24px',
-                lineHeight: 1.4,
-                color: 'var(--text-primary)',
-              }}
-            >
-              ご登録ありがとうございます
-            </Heading>
-
             <Text
               style={{
-                margin: '24px 0 0',
+                margin: 0,
                 fontSize: '16px',
                 lineHeight: 1.7,
                 color: 'var(--text-primary)',
               }}
             >
-              Lumina のアカウント登録が完了しました。
-              <br />
-              下のリンクから最初の設定を進めてください。
+              ログイン画面で、以下の認証コードを入力してください。
             </Text>
 
-            <Text style={{ margin: '16px 0 0', fontSize: '16px', lineHeight: 1.7 }}>
-              <Link href="https://example.com/setup" style={{ color: 'var(--link)' }}>
-                初期設定をはじめる
-              </Link>
+            <Text
+              style={{
+                margin: '24px 0 0',
+                fontSize: '32px',
+                fontWeight: 'bold',
+                letterSpacing: '8px',
+                lineHeight: 1.2,
+                textAlign: 'center',
+                color: 'var(--text-primary)',
+              }}
+            >
+              123456
+            </Text>
+
+            <Text
+              style={{
+                margin: '24px 0 0',
+                fontSize: '14px',
+                lineHeight: 1.7,
+                color: 'var(--text-secondary)',
+              }}
+            >
+              このコードの有効期限は10分です。
             </Text>
 
             {/* 問題7: border を none で潰したあと、borderTop を var() 単独で指定している。
@@ -116,7 +118,7 @@ export const MailBad: FC = () => {
                 color: 'var(--text-secondary)',
               }}
             >
-              このメールに心当たりがない場合は破棄してください。
+              このメールに心当たりがない場合は、破棄してください。
             </Text>
           </Section>
 
@@ -124,7 +126,7 @@ export const MailBad: FC = () => {
             <Text
               style={{ margin: 0, fontSize: '12px', color: 'var(--text-secondary)' }}
             >
-              Lumina Inc.
+              Sample Inc.
             </Text>
           </Section>
         </Container>
