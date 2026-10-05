@@ -5,20 +5,11 @@ import { Body, Container, Head, Hr, Html, Section, Text } from '@react-email/com
 const style = `
   :root {
     --text-primary: #16181A;
-    --text-secondary: #5A5F65;
-    --bg-card: #FFFFFF;
-    --border: #DDE2E7;
   }
-  /* 問題1: ダーク対応が @media だけ */
   @media (prefers-color-scheme: dark) {
-    /* 問題2: CSS 変数で上書きしている */
     :root {
       --text-primary: #FFFFFF;
-      --text-secondary: #A6ADB5;
-      --bg-card: #16181A;
-      --border: #FFFFFF99;
     }
-    .logo { fill: #FFFFFF; }
   }
 `;
 
@@ -39,7 +30,7 @@ export const MailBad = () => (
       <Container style={{ maxWidth: '600px' }}>
         {/* 問題6: 色指定が var() 単独 */}
         <Section style={{ backgroundColor: 'var(--bg-card)', padding: '40px' }}>
-          <Text style={{ color: 'var(--text-primary)' }}>
+          <Text style={{ color: 'var(--text-primary, #16181A)' }}>
             ログイン画面で、以下の認証コードを入力してください。
           </Text>
           <Text style={{ color: 'var(--text-primary)', fontSize: '32px' }}>

@@ -38,6 +38,8 @@ export const logos = {
   transparent: `${CDN}/logo-transparent.png?v=2`,
   /** 白い板と余白を焼き込んだPNG。どちらのモードでも同じ見え方になる。 */
   plate: `${CDN}/logo-plate.png?v=2`,
+  /** 黄色の帯にロゴを焼き込んだヘッダー（600×72 の 2 倍）。画像は自動変換されないので、黄色が保たれる。 */
+  brandHeader: `${CDN}/header-brand.png`,
 } as const;
 
 export const fontFamily =

@@ -80,7 +80,7 @@ export const MailBad: FC = () => {
       {/* 問題4: ページ背景を <body> に静的値で書いただけ。ダークモード用の上書きが無いので、
                  カードだけが暗くなり、周りはライトのまま取り残される。
                  （背景自体は、macOS の Apple Mail でインライン SVG を表示させるために必要） */}
-      <Body style={{ margin: 0, fontFamily, backgroundColor: 'var(--bg-page)' }}>
+      <Body style={{ margin: 0, fontFamily, background: light.bgPage, backgroundColor: `var(--bg-page, ${light.bgPage})` }}>
         <Section style={{ padding: '40px 0', textAlign: 'center' }}>
           {/* 問題5: インライン SVG のロゴ。Apple Mail では @media で色が切り替わるが、
                      Gmail は <svg> を除去し、Outlook デスクトップも描画しないので、ロゴごと消える。 */}
@@ -102,7 +102,8 @@ export const MailBad: FC = () => {
             style={{
               // 問題6: 色指定が var() 単独。var() を解釈できないクライアントでは
               //        プロパティごと捨てられ、背景が消える。
-              backgroundColor: 'var(--bg-card)',
+              background: light.bgCard,
+              backgroundColor: `var(--bg-card, ${light.bgCard})`,
               borderRadius: '16px',
               padding: '40px',
             }}
